@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=380">
+  <link rel="stylesheet" href="popup.css">
+  <title>RatMode</title>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header class="header">
+    <div class="header-mark">RM</div>
+    <div class="header-text">
+      <h1 class="header-title"><strong style="font-weight: 700; font-family: inherit;">Rat</strong><span style="font-style: italic; font-weight: 400;">Mode</span></h1>
+      <p class="header-tagline">scroll resistance lab</p>
+    </div>
+  </header>
+
+  <!-- ── Quick Stats ── -->
+  <section class="stats-strip">
+    <div class="stat-cell">
+      <span class="stat-value" id="stat-sessions">0</span>
+      <span class="stat-label">Sessions</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-cell">
+      <span class="stat-value" id="stat-streak">0</span>
+      <span class="stat-label">Streak</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-cell">
+      <span class="stat-value" id="stat-best">0</span>
+      <span class="stat-label">Best</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-cell">
+      <span class="stat-value" id="stat-roasts">0</span>
+      <span class="stat-label">Roasts</span>
+    </div>
+  </section>
+
+  <!-- ── Active Session ── -->
+  <section class="active-session" id="active-session" hidden>
+    <div class="active-session-dot"></div>
+    <div class="active-session-info">
+      <span class="active-session-site" id="active-site">—</span>
+      <span class="active-session-time" id="active-time">0m</span>
+    </div>
+  </section>
+
+  <!-- ── Settings ── -->
+  <section class="settings">
+    <h2 class="section-heading">Settings</h2>
+
+    <div class="setting-row">
+      <label class="setting-label" for="roast-mode">Roast mode</label>
+      <select class="setting-select" id="roast-mode">
+        <option value="local">Local</option>
+        <option value="gemini">Gemini</option>
+      </select>
+    </div>
+
+    <div class="setting-row">
+      <label class="setting-label" for="roast-interval">Interval</label>
+      <div class="slider-wrap">
+        <input class="setting-slider" id="roast-interval" type="range" min="0.5" max="60" value="0.5" step="0.5">
+        <span class="slider-readout" id="interval-readout">30 sec</span>
+      </div>
+    </div>
+
+    <div class="setting-row setting-row--stacked" id="gemini-key-row" hidden>
+      <label class="setting-label" for="gemini-key">Gemini API key</label>
+      <input class="setting-input" id="gemini-key" type="password" placeholder="Paste key here" spellcheck="false" autocomplete="off">
+    </div>
+
+    <div class="setting-row setting-row--stacked" id="gemini-model-row" hidden>
+      <label class="setting-label" for="gemini-model">Gemini model</label>
+      <input class="setting-input" id="gemini-model" type="text" value="gemini-3.1-pro-preview" spellcheck="false" autocomplete="off">
+    </div>
+  </section>
+
+  <!-- ── Recent History ── -->
+  <section class="history">
+    <h2 class="section-heading">Recent</h2>
+    <div class="history-list" id="history-list">
+      <p class="history-empty" id="history-empty">No completed sessions yet.</p>
+    </div>
+  </section>
+
+  <!-- ── Actions ── -->
+  <section class="actions">
+    <button class="btn-danger" id="reset-all" type="button">Reset all data</button>
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+</html>

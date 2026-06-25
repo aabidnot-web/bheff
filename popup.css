@@ -1,0 +1,441 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+/* ── Tokens ── */
+:root {
+  --ink: #f4f0e8;
+  --muted: #aaa59a;
+  --dim: #777268;
+  --paper: rgba(11, 11, 9, 0.82);
+  --acid: #c6ff4d;
+  --acid-ink: #111407;
+  --danger: #ff7058;
+  --bg: #050505;
+  --surface: #0d0d0b;
+  --border: #1e1d1a;
+  --border-hi: #2a2924;
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background: var(--acid);
+  color: var(--acid-ink);
+}
+
+/* ── Body / Shell ── */
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+  width: 380px;
+  max-height: 520px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--border-hi);
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-mark {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  background: var(--acid);
+  color: var(--acid-ink);
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 0 #000;
+  border-radius: 0;
+}
+
+.header-title {
+  font-family: "Instrument Serif", serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.header-tagline {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-top: 2px;
+}
+
+/* ── Quick Stats Strip ── */
+.stats-strip {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+}
+
+.stat-cell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 12px 0;
+}
+
+.stat-value {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--acid);
+  letter-spacing: -0.03em;
+}
+
+.stat-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.stat-divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--border);
+}
+
+/* ── Active Session Indicator ── */
+.active-session {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: rgba(198, 255, 77, 0.06);
+  border-bottom: 1px solid var(--border);
+}
+
+.active-session[hidden] {
+  display: none;
+}
+
+.active-session-dot {
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  background: var(--acid);
+  box-shadow: 0 0 6px rgba(198, 255, 77, 0.5);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.active-session-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+}
+
+.active-session-site {
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.active-session-time {
+  font-family: "Inter", monospace;
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--acid);
+  letter-spacing: 0.03em;
+  flex: 0 0 auto;
+  padding-left: 8px;
+}
+
+/* ── Settings ── */
+.settings {
+  padding: 14px 18px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-heading {
+  font-family: "Instrument Serif", serif;
+  font-size: 19px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 12px;
+  letter-spacing: 0.01em;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 0;
+}
+
+.setting-row--stacked {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 5px;
+}
+
+.setting-row--stacked[hidden] {
+  display: none;
+}
+
+.setting-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.setting-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--surface);
+  border: 1px solid var(--border-hi);
+  color: var(--ink);
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 28px 5px 10px;
+  border-radius: 0;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 2px 2px 0 #000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23777268'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.setting-select:focus {
+  border-color: var(--acid);
+  box-shadow: 2px 2px 0 #000, 0 0 0 1px var(--acid);
+}
+
+.slider-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  max-width: 200px;
+}
+
+.setting-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 3px;
+  background: var(--border-hi);
+  outline: none;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.setting-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--acid);
+  border: 2px solid var(--acid-ink);
+  border-radius: 0;
+  cursor: grab;
+  box-shadow: 1px 1px 0 #000;
+}
+
+.setting-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: var(--acid);
+  border: 2px solid var(--acid-ink);
+  border-radius: 0;
+  cursor: grab;
+  box-shadow: 1px 1px 0 #000;
+}
+
+.setting-slider:active::-webkit-slider-thumb {
+  cursor: grabbing;
+}
+
+.slider-readout {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+  min-width: 42px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.setting-input {
+  background: var(--surface);
+  border: 1px solid var(--border-hi);
+  color: var(--ink);
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 7px 10px;
+  border-radius: 0;
+  outline: none;
+  box-shadow: 2px 2px 0 #000;
+  width: 100%;
+}
+
+.setting-input:focus {
+  border-color: var(--acid);
+  box-shadow: 2px 2px 0 #000, 0 0 0 1px var(--acid);
+}
+
+.setting-input::placeholder {
+  color: var(--dim);
+  font-weight: 400;
+}
+
+/* ── Recent History ── */
+.history {
+  padding: 14px 18px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.history-empty {
+  font-size: 11px;
+  color: var(--dim);
+  font-style: italic;
+  padding: 4px 0 2px;
+}
+
+.history-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.history-entry:last-child {
+  border-bottom: none;
+}
+
+.history-site {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex: 1;
+}
+
+.history-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.history-score {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--acid);
+  font-variant-numeric: tabular-nums;
+}
+
+.history-duration {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--dim);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Actions ── */
+.actions {
+  padding: 14px 18px 18px;
+}
+
+.btn-danger {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 9px 0;
+  border-radius: 0;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #000;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-danger:hover {
+  background: var(--danger);
+  color: #050505;
+}
+
+.btn-danger:active {
+  box-shadow: 0 0 0 #000;
+  transform: translate(2px, 2px);
+}
