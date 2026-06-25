@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect width="128" height="128" fill="#c6ff4d"/>
+  <text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle"
+    font-family="Inter,system-ui,sans-serif" font-weight="900"
+    font-size="51px" fill="#111407">RM</text>
+</svg>
